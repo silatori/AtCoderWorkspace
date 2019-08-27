@@ -39,9 +39,11 @@ namespace AtCoderWorkspace
 
     static class Subsequence
     {
-        /// <summary>
-        /// 最長増加部分列
-        /// </summary>
+       /// <summary>
+       /// 最長増加部分列
+       /// </summary>
+       /// <param name="a">long[]</param>
+       /// <returns></returns>
         public static long LIS(long[] a)
         {
             var dp = Enumerable.Range(0, a.Length).Select(x => long.MaxValue).ToArray();
