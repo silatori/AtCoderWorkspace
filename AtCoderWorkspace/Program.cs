@@ -12,10 +12,44 @@ namespace AtCoderWorkspace
         static void Main(string[] args)
         {
             var cin = new Scanner();
-            var N = cin.nextInt();
-            var S = cin.next();
+            var s = cin.next();
 
             Console.WriteLine();
+        }
+    }
+
+    static class C
+    {
+        public static long LowerBound(long[] a, long key)
+        {
+            long l = 0;
+            long r = a.Length;
+            long mid;
+            while (l < r)
+            {
+                mid = ((r - l) / 2) + l;
+                if (a[mid] <= key)
+                    l = mid + 1;
+                else
+                    r = mid;
+            }
+            return l;
+        }
+    }
+
+    static class Subsequence
+    {
+        /// <summary>
+        /// 最長増加部分列
+        /// </summary>
+        public static long LIS(long[] a)
+        {
+            var dp = Enumerable.Range(0, a.Length).Select(x => long.MaxValue).ToArray();
+            for (int i = 0; i < a.Length; i++)
+            {
+                dp[C.LowerBound(dp, a[i])] = a[i];
+            }
+            return C.LowerBound(dp, long.MaxValue-1);
         }
     }
 
