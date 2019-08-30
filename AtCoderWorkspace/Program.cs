@@ -7,16 +7,23 @@ using System.Numerics;
 
 namespace AtCoderWorkspace
 {
-    class Program
+    public class Solver
     {
-        static void Main(string[] args)
+        public void Input()
         {
             var cin = new Scanner();
             var s = cin.next();
+           
+            this.Solve();
+        }
 
-            Console.WriteLine();
+        public void Solve()
+        {
+            
         }
     }
+
+    #region library
 
     static class C
     {
@@ -229,5 +236,12 @@ namespace AtCoderWorkspace
             return new ModInt(ret);
         }
         public static ModInt Inverse(ModInt v) { return Pow(v, Mod - 2); }
+    }
+
+    #endregion
+
+    class Program
+    {
+        static void Main(string[] s) => new Solver().Input();
     }
 }
