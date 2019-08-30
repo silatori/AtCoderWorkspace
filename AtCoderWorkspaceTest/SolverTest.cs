@@ -26,18 +26,10 @@ namespace AtCoderWorkspaceTest
                 Console.SetIn(vInput);
                 Console.SetOut(vOutput);
 
-                s.Input();
-                Assert.AreEqual(ansList[0], vOutput.ToString().Trim());
-                vOutput.GetStringBuilder().Clear();
-
-                s.Input();
-                Assert.AreEqual(ansList[1], vOutput.ToString().Trim());
-                vOutput.GetStringBuilder().Clear();
-
-                if (ansList.Length > 2)
+                foreach (var expected in ansList)
                 {
                     s.Input();
-                    Assert.AreEqual(ansList[2], vOutput.ToString().Trim());
+                    Assert.AreEqual(expected, vOutput.ToString().Trim());
                     vOutput.GetStringBuilder().Clear();
                 }
             }
