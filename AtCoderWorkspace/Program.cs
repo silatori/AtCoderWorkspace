@@ -9,17 +9,13 @@ namespace AtCoderWorkspace
 {
     public class Solver
     {
-        public void Input()
-        {
-            var cin = new Scanner();
-            var s = cin.next();
-           
-            this.Solve();
-        }
-
         public void Solve()
         {
-            
+            var cin = new Scanner();
+            var n = cin.nextInt();
+            var a = cin.ArrayLong(n);
+
+            Console.WriteLine();
         }
     }
 
@@ -57,6 +53,38 @@ namespace AtCoderWorkspace
                     r = mid;
             }
             return l;
+        }
+    }
+
+    public static partial class MathEx
+    {
+        public static int GCD(int n, int m) { return (int)GCD((long)n, m); }
+
+        public static long GCD(long n, long m)
+        {
+            n = Math.Abs(n);
+            m = Math.Abs(m);
+            while (n != 0)
+            {
+                m %= n;
+                if (m == 0) return n;
+                n %= m;
+            }
+            return m;
+        }
+
+        public static long LCM(long n, long m) { return (n / GCD(n, m)) * m; }
+
+        public static bool[] Sieve(int max, List<int> primes = null)
+        {
+            var isPrime = new bool[max + 1];
+            for (int i = 2; i < isPrime.Length; i++) isPrime[i] = true;
+            for (int i = 2; i * i <= max; i++)
+                if (!isPrime[i]) continue;
+                else for (int j = i * i; j <= max; j += i) isPrime[j] = false;
+            if (primes != null) for (int i = 0; i <= max; i++) if (isPrime[i]) primes.Add(i);
+
+            return isPrime;
         }
     }
 
@@ -242,6 +270,6 @@ namespace AtCoderWorkspace
 
     class Program
     {
-        static void Main(string[] s) => new Solver().Input();
+        static void Main(string[] s) => new Solver().Solve();
     }
 }

@@ -28,7 +28,7 @@ namespace AtCoderWorkspaceTest
 
                 foreach (var expected in ansList)
                 {
-                    s.Input();
+                    s.Solve();
                     Assert.AreEqual(expected, vOutput.ToString().Trim());
                     vOutput.GetStringBuilder().Clear();
                 }
