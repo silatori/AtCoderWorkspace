@@ -17,7 +17,7 @@ namespace AtCoderWorkspaceTest
             // output取得
             var outputStr = new StreamReader("output.txt");
             var ansList = outputStr.ReadToEnd().Split('~');
-            ansList = ansList.Select(ss => ss.Trim()).ToArray();
+            ansList = ansList.Select(ans => ans.Trim()).ToArray();
 
             // アサート用疑似標準入出力
             using (var vInput = new StreamReader("input.txt"))
