@@ -15,9 +15,18 @@ namespace AtCoderWorkspaceTest
             var s = new Solver();
 
             // output取得
-            var outputStr = new StreamReader("output.txt");
-            var ansList = outputStr.ReadToEnd().Split('~');
-            ansList = ansList.Select(ss => ss.Trim()).ToArray();
+            var reader = new StreamReader("output.txt");
+            var outputStr = reader.ReadToEnd();
+
+            if(outputStr == null || outputStr == "")
+            {
+                Console.WriteLine("outputが未入力です。");
+                Assert.Fail();
+                return;
+            }
+
+            var exList = outputStr.Split('~');
+            exList = exList.Select(ss => ss.Trim()).ToArray();
 
             // アサート用疑似標準入出力
             using (var vInput = new StreamReader("input.txt"))
@@ -26,7 +35,7 @@ namespace AtCoderWorkspaceTest
                 Console.SetIn(vInput);
                 Console.SetOut(vOutput);
 
-                foreach (var expected in ansList)
+                foreach (var expected in exList)
                 {
                     s.Solve();
                     Assert.AreEqual(expected, vOutput.ToString().Trim());
