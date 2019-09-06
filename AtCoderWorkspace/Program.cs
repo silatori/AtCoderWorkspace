@@ -12,6 +12,7 @@ namespace AtCoderWorkspace
         public void Solve()
         {
             var cin = new Scanner();
+            var s = cin.next();
             var n = cin.nextInt();
             var a = cin.ArrayLong(n);
 
