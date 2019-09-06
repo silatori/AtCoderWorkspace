@@ -14,9 +14,8 @@ namespace AtCoderWorkspace
             var cin = new Scanner();
             var s = cin.next();
             var n = cin.nextInt();
-            var a = cin.ArrayLong(n);
 
-            Console.WriteLine();
+            Console.WriteLine(n);
         }
     }
 
