@@ -248,6 +248,16 @@ namespace AtCoderWorkspace
             return Array;
         }
 
+        public int[] DPArrayInt(int N, int ex)
+        {
+            int[] Array = new int[N+ex];
+            for (int i = 0; i < N; i++)
+            {
+                Array[i] = nextInt();
+            }
+            return Array;
+        }
+
         public long nextLong()
         {
             return long.Parse(next());
@@ -259,6 +269,16 @@ namespace AtCoderWorkspace
             for (int i = 0; i < N; i++)
             {
                 Array[i] = nextLong() + add;
+            }
+            return Array;
+        }
+
+        public long[] DPArrayLong(int N, int ex)
+        {
+            long[] Array = new long[N + ex];
+            for (int i = 0; i < N; i++)
+            {
+                Array[i] = nextLong();
             }
             return Array;
         }
