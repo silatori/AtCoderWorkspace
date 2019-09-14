@@ -197,6 +197,43 @@ namespace AtCoderWorkspace
         public bool Any() { return size > 0; }
     }
 
+    class DP
+    {
+        public static void ChMin(ref int a, int b)
+        {
+            long la = a;
+            long lb = b;
+            ChMin(ref la, lb);
+        }
+
+        public static bool ChMin(ref long a, long b)
+        {
+            if(a > b)
+            {
+                a = b;
+                return true;
+            }
+            return false;
+        }
+
+        public static void ChMax(ref int a, int b)
+        {
+            long la = a;
+            long lb = b;
+            ChMax(ref la, lb);
+        }
+
+        public static bool ChMax(ref long a, long b)
+        {
+            if (a < b)
+            {
+                a = b;
+                return true;
+            }
+            return false;
+        }
+    }
+
     class Scanner
     {
         string[] s;
@@ -235,6 +272,16 @@ namespace AtCoderWorkspace
             return Array;
         }
 
+        public int[] DPArrayInt(int N, int ex)
+        {
+            int[] Array = new int[N+ex];
+            for (int i = 0; i < N; i++)
+            {
+                Array[i] = nextInt();
+            }
+            return Array;
+        }
+
         public long nextLong()
         {
             return long.Parse(next());
@@ -246,6 +293,16 @@ namespace AtCoderWorkspace
             for (int i = 0; i < N; i++)
             {
                 Array[i] = nextLong() + add;
+            }
+            return Array;
+        }
+
+        public long[] DPArrayLong(int N, int ex)
+        {
+            long[] Array = new long[N + ex];
+            for (int i = 0; i < N; i++)
+            {
+                Array[i] = nextLong();
             }
             return Array;
         }
