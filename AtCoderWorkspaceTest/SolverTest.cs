@@ -14,7 +14,6 @@ namespace AtCoderWorkspaceTest
         {
             var s = new Solver();
 
-            // output取得
             var reader = new StreamReader("output.txt");
             var outputStr = reader.ReadToEnd();
 
@@ -28,7 +27,6 @@ namespace AtCoderWorkspaceTest
             var exList = outputStr.Split('~');
             exList = exList.Select(ss => ss.Trim()).ToArray();
 
-            // アサート用疑似標準入出力
             using (var vInput = new StreamReader("input.txt"))
             using (var vOutput = new StringWriter())
             {
