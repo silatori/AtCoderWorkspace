@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Number = System.Int64;
 
 namespace AtCoderWorkspace
 {
@@ -114,7 +115,6 @@ namespace AtCoderWorkspace
 
             return true;
         }
-
     }
 
     public static class Combination
@@ -369,6 +369,47 @@ namespace AtCoderWorkspace
                 return true;
             }
             return false;
+        }
+    }
+        
+    public class FenwickTree
+    {
+        int n;
+        Number[] bit;
+        int max = 1;
+        public FenwickTree(int size)
+        {
+            n = size; bit = new Number[n + 1];
+            while ((max << 1) <= n) max <<= 1;
+        }
+        public Number this[int i, int j] { get { return this[j] - this[i - 1]; } }
+        public Number this[int i] { get { Number s = 0; for (; i > 0; i -= i & -i) s += bit[i]; return s; } }
+        public int LowerBound(Number w)
+        {
+            if (w <= 0) return 0;
+            int x = 0;
+            for (int k = max; k > 0; k >>= 1)
+                if (x + k <= n && bit[x + k] < w)
+                {
+                    w -= bit[x + k];
+                    x += k;
+                }
+            return x + 1;
+        }
+        public void Add(int i, Number v)
+        {
+            if (i == 0) System.Diagnostics.Debug.Fail("BIT is 1 indexed");
+            for (; i <= n; i += i & -i) bit[i] += v;
+        }
+        public Number[] Items
+        {
+            get
+            {
+                var ret = new Number[n + 1];
+                for (int i = 0; i < ret.Length; i++)
+                    ret[i] = this[i, i];
+                return ret;
+            }
         }
     }
 }
