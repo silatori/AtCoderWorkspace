@@ -117,6 +117,33 @@ namespace AtCoderWorkspace
         }
     }
 
+    public class Permutation
+    {
+        public IEnumerable<T[]> Enumerate<T>(IEnumerable<T> items)
+        {
+            return _GetPermutations<T>(new List<T>(), items.ToList());
+        }
+
+        private IEnumerable<T[]> _GetPermutations<T>(IEnumerable<T> perm, IEnumerable<T> items)
+        {
+            if (items.Count() == 0)
+            {
+                yield return perm.ToArray();
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    var result = _GetPermutations<T>(perm.Concat(new T[] { item }),
+                                                        items.Where(x => x.Equals(item) == false)
+                                    );
+                    foreach (var xs in result)
+                        yield return xs.ToArray();
+                }
+            }
+        }
+    }
+
     public static class Combination
     {
         public static IEnumerable<T[]> Enumerate<T>(IEnumerable<T> items, int k, bool withRepetition)
