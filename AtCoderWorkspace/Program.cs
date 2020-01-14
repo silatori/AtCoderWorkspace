@@ -12,85 +12,14 @@ namespace AtCoderWorkspace
         public void Solve()
         {
             var cin = new Scanner();
-            var h = cin.nextInt();
-            var w = cin.nextInt();
-            var f = new int[h, w];
-            for (int i = 0; i < h; i++)
-            {
-                var row = cin.next().ToCharArray();
-                for (int j = 0; j < w; j++)
-                {
-                    if (row[j] == '.')
-                    {
-                        f[i, j] = 0;
-                    }
-                    else
-                    {
-                        f[i, j] = 1;
-                    }
-                }
-            }
+            var s = cin.next();
+            var n = cin.nextInt();
+            var a = cin.ArrayLong(n);
 
 
-            var ans = new List<int>();
-            var xx = new int[] { 1, 0, -1, 0 }; // 右 下 左 上
-            var yy = new int[] { 0, -1, 0, 1 };
             
-            for (int i = 0; i < h; i++)
-            {
-                for (int j = 0; j < w; j++)
-                {
-                    if (f[i, j] == 1) continue; // スタートが壁は何もしない
-                    for (int gi = 0; gi < h; gi++)
-                    {
-                        for (int gj = 0; gj < w; gj++)
-                        {
-                            if (f[gi, gj] == 1) continue; // ゴールが壁は何もしない
-                            if (i == gi && j == gj) continue; // スタートゴールは違う場所
-                            
-                            var que = new Queue<point>();
-                            que.Enqueue(new point() { x = j,y = i,cost = 0});
-                            var visited = new int[h, w];
-                            visited[i, j] = 1;
-                            while (que.Count > 0)
-                            {
-                                var p = que.Dequeue();
-                                // 右上左下チェック
-                                for (int z = 0; z <= 3; z++)
-                                {
-                                    if(0 <= xx[z] + p.x && xx[z] + p.x < w && 0 <= yy[z] + p.y && yy[z] + p.y < h)
-                                    {
-                                        if (f[xx[z]+p.x, yy[z] + p.y] == 1) continue; // 壁は何もしない 
-                                        if (visited[xx[z] + p.x, yy[z] + p.y] == 1) continue; // 訪問済みは何もしない
-
-                                        // ゴール判定
-                                        if(xx[z] + p.x　== gj && yy[z] + p.y == gi)
-                                        {
-                                            ans.Add(p.cost++);
-                                            que.Clear();
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            visited[p.x,p.y] = 1;
-                                            que.Enqueue(new point() { x = xx[z] + p.x, y = yy[z] + p.y, cost = p.cost++ });
-                                        }                                        
-                                    }                                    
-                                }
-                            }
-                        }
-                    }                   
-                }
-            }
-            Console.WriteLine(ans.Max());
+            Console.WriteLine(s);
         }
-    }
-
-    class point
-    {
-        public int x { get; set; }
-        public int y { get; set; }
-        public int cost { get; set; }
     }
 
     class Scanner
