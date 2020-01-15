@@ -33,6 +33,25 @@ namespace AtCoderLibrary
                     }
                 }
             }
+
+
+            // bit全探索
+            var N = 0;
+            for (int bit = 0; bit < (1 << N); bit++)
+            {
+                Console.WriteLine(bit);
+                for (int i = 0; i < N; i++)
+                {
+                    if ((bit & (1 << i)) > 0)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }        
     }
 
