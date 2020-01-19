@@ -10,8 +10,12 @@ namespace AtCoderLibrary
     {
         void main()
         {
-            var xx = new int[] { 1, 0, -1, 0 }; // 右 下 左 上
+            // 右 下 左 上
+            var xx = new int[] { 1, 0, -1, 0 }; 
             var yy = new int[] { 0, -1, 0, 1 };
+
+            // mod
+            long mod = 1000000007;
 
             // グリッド取得
             var cin = new Scanner();
