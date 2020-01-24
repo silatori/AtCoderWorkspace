@@ -11,7 +11,7 @@ namespace AtCoderLibrary
         void main()
         {
             // 右 下 左 上
-            var xx = new int[] { 1, 0, -1, 0 }; 
+            var xx = new int[] { 1, 0, -1, 0 };
             var yy = new int[] { 0, -1, 0, 1 };
 
             // mod
@@ -56,7 +56,7 @@ namespace AtCoderLibrary
                     }
                 }
             }
-        }        
+        }
     }
 
     class Point
