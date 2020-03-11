@@ -18,7 +18,7 @@ namespace AtCoderWorkspace
 
 
             
-            Console.WriteLine(s);
+            Console.WriteLine();
         }
     }
 
