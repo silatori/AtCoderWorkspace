@@ -7,22 +7,37 @@ namespace AtCoderWorkspace.lib
     class BinarySearch<T>
     {
         T[] a;
-        Func<T,bool> isOK;
+        Func<T, bool> isOK;
 
         /// <param name="a">探索する配列</param>
         /// <param name="isOK">midの判定</param>
-        public BinarySearch(T[] a, Func<T,bool> isOK)
+        public BinarySearch(T[] a, Func<T, bool> isOK)
         {
             this.a = a;
             this.isOK = isOK;
         }
 
-        public int Search()
+        public int LSearch()
+        {
+            int ok = -1;
+            int ng = a.Length;
+
+            while (Math.Abs(ok - ng) > 1)
+            {
+                int mid = (ok + ng) / 2;
+
+                if (isOK(a[mid])) ok = mid;
+                else ng = mid;
+            }
+            return ok;
+        }
+
+        public int RSearch()
         {
             int ng = -1;
             int ok = a.Length;
 
-            while(Math.Abs(ok - ng) > 1)
+            while (Math.Abs(ok - ng) > 1)
             {
                 int mid = (ok + ng) / 2;
 
@@ -49,10 +64,6 @@ namespace AtCoderWorkspace.lib
             this.isOK = isOK;
         }
 
-        /// <summary>
-        /// 条件を満たす最大の値
-        /// </summary>
-        /// <returns></returns>
         public long OK()
         {
             long ok = this.ok;
@@ -68,10 +79,6 @@ namespace AtCoderWorkspace.lib
             return ok;
         }
 
-        /// <summary>
-        /// 条件を満たさない最小の値
-        /// </summary>
-        /// <returns></returns>
         public long NG()
         {
             long ok = this.ok;
